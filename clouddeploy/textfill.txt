@@ -1,0 +1,41 @@
+sudo yum update -y
+
+sudo yum install git -y
+
+git config --global credential.helper store
+git clone https://username:token@github.com/your-username/your-repository.git
+
+# Update the package manager
+sudo yum update -y
+
+# Install Docker
+sudo yum install docker -y
+
+# Start Docker service
+sudo service docker start
+
+# Add the ec2-user to the docker group
+sudo usermod -a -G docker ec2-user
+
+# Optional: Enable Docker to start on boot
+sudo chkconfig docker on
+
+
+# dokcer compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+
+# if user error
+sudo usermod -aG docker $USER
+groups
+sudo service docker restart
+sudo systemctl restart docker
+sudo reboot
+docker-compose down
+docker-compose up
+
+
+#chnage ports in security group
+
